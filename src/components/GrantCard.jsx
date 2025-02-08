@@ -85,6 +85,14 @@ const GrantCard = ({ grant }) => {
             <h3 className="text-sm font-semibold">Description:</h3>
             <p className="text-gray-400 text-sm">{grant.description}</p>
           </div>
+          <div className="flex flex-col">
+            <h3 className="text-sm font-semibold">Topics:</h3>
+            <p className="text-gray-400 text-sm">{grant.description}</p>
+          </div>
+          <div className="flex flex-col">
+            <h3 className="text-sm font-semibold">Funding Detail:</h3>
+            <p className="text-gray-400 text-sm">{grant.description}</p>
+          </div>
           <div className="flex flex-wrap gap-4">
             <div className="flex gap-2">
               <h3 className="text-sm font-semibold">Funding Type:</h3>
@@ -92,6 +100,7 @@ const GrantCard = ({ grant }) => {
                 {getLabels([grant.fundingType], fundingTypeLabels)}
               </p>
             </div>
+            
             {grant.minFunding && (
               <div className="flex gap-2">
                 <h3 className="text-sm font-semibold">Min Funding:</h3>
