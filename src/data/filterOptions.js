@@ -42,6 +42,7 @@ export const fundingTopics = [
   { value: "mev-transaction-optimization", label: "MEV & Transaction Optimization" },
   { value: "ai-zk-hybrid", label: "AI & ZK (Hybrid)" },
   { value: "depin", label: "DePIN (Decentralized Physical Infrastructure)" },
+  { value: "education", label: "Education" }
 ];
 
 export const fundingTypes = [
