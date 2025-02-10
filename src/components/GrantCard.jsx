@@ -39,8 +39,8 @@ const GrantCard = ({ grant }) => {
         <div className="flex flex-col md:flex-row justify-between gap-4">
           <div className="flex flex-col gap-2">
             <div className="flex text-gray-400 gap-2.5 text-[0.95rem]">
-              <span>
-                <span className="text-white font-semibold capitalize">Ecosystem: </span>
+              <span className="capitalize">
+                <span className="text-white font-semibold">Ecosystem: </span>
                 {grant.ecosystem}
               </span>
               <Separator orientation="vertical" className="bg-gray-400" />
