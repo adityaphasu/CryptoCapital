@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { Input } from "./ui/input";
 import { EcosystemDropdown } from "./EcosystemDropdown";
 import GrantCard from "./GrantCard";
@@ -20,35 +20,32 @@ const Board = () => {
   const [grantPrograms, setGrantPrograms] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
   const fetchGrants = async () => {
     try {
       const response = await fetch(
         `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`
       );
-      
+
       if (!response.ok) {
-        throw new Error('Failed to fetch data');
+        throw new Error("Failed to fetch data");
       }
 
       const data = await response.json();
-      
+
       if (data.values && data.values.length > 1) {
         const headers = data.values[0];
         const formattedData = data.values.slice(1).map((row) => {
           const grant = headers.reduce((acc, header, index) => {
-            if (header === 'fundingTopics') {
-              acc[header] = row[index] ? row[index].split(',').map(topic => topic.trim().toLowerCase()) : [];
-            } else {
-              acc[header] = (row[index] || '').toLowerCase();
-            }
+            acc[header] = row[index] || "";
+
             return acc;
           }, {});
-          
+
           return {
             ...grant,
-            id: crypto.randomUUID()
+            id: crypto.randomUUID(),
           };
         });
 
@@ -66,30 +63,45 @@ const Board = () => {
   }, []);
 
   const filteredAndSortedGrants = React.useMemo(() => {
-    let filtered = grantPrograms.filter(grant => 
-      (selectedEcosystems.length === 0 || selectedEcosystems.includes(grant.ecosystem)) &&
-      (selectedStatuses.length === 0 || selectedStatuses.includes(grant.status)) &&
-      (selectedFundingTopics.length === 0 || 
-        grant.fundingTopics.some(topic => selectedFundingTopics.includes(topic))) &&
-      (selectedFundingTypes.length === 0 || selectedFundingTypes.includes(grant.fundingType)) &&
-      (!searchQuery || 
-        grant.grantProgramName.toLowerCase().includes(searchQuery.toLowerCase()))
+    let filtered = grantPrograms.filter(
+      (grant) =>
+        (selectedEcosystems.length === 0 ||
+          selectedEcosystems.includes(grant.ecosystem)) &&
+        (selectedStatuses.length === 0 ||
+          selectedStatuses.includes(grant.status)) &&
+        (selectedFundingTopics.length === 0 ||
+          grant.fundingTopics.some((topic) =>
+            selectedFundingTopics.includes(topic)
+          )) &&
+        (selectedFundingTypes.length === 0 ||
+          selectedFundingTypes.includes(grant.fundingType)) &&
+        (!searchQuery ||
+          grant.grantProgramName
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase()))
     );
 
-    if (selectedSortBy.includes('mostRecent')) {
-      filtered = [...filtered].sort((a, b) => 
-        new Date(b.dateAdded || 0) - new Date(a.dateAdded || 0)
+    if (selectedSortBy.includes("mostRecent")) {
+      filtered = [...filtered].sort(
+        (a, b) => new Date(b.dateAdded || 0) - new Date(a.dateAdded || 0)
       );
     }
-    if (selectedSortBy.includes('funding')) {
-      filtered = [...filtered].sort((a, b) => 
-        Number(b.fundingAmount || 0) - Number(a.fundingAmount || 0)
+    if (selectedSortBy.includes("funding")) {
+      filtered = [...filtered].sort(
+        (a, b) => Number(b.fundingAmount || 0) - Number(a.fundingAmount || 0)
       );
     }
 
     return filtered;
-  }, [grantPrograms, selectedEcosystems, selectedStatuses, selectedFundingTopics, 
-      selectedFundingTypes, selectedSortBy, searchQuery]);
+  }, [
+    grantPrograms,
+    selectedEcosystems,
+    selectedStatuses,
+    selectedFundingTopics,
+    selectedFundingTypes,
+    selectedSortBy,
+    searchQuery,
+  ]);
 
   if (error) {
     return <div className="text-red-500">Error: {error}</div>;
@@ -98,8 +110,8 @@ const Board = () => {
   return (
     <div>
       <div className="my-5 flex flex-col gap-4 p-5 rounded-lg justify-center backdrop-blur bg-white/5">
-        <Input 
-          placeholder="Search Grants..." 
+        <Input
+          placeholder="Search Grants..."
           className="bg-[#151226]/50 border-[#151226] text-gray-400"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
@@ -114,15 +126,16 @@ const Board = () => {
 
         <div className="ml-2 flex gap-3 items-center flex-wrap">
           <h3 className="font-semibold text-white">Sort By:</h3>
-          {['mostRecent', 'funding'].map((criteria) => (
+          {["mostRecent", "funding"].map((criteria) => (
             <Button
               key={criteria}
               className={`h-auto bg-[#151226]/70 text-white hover:bg-[#151226] ${
-                selectedSortBy.includes(criteria) && "bg-[#00bbfc] hover:bg-[#00bbfc]/50"
+                selectedSortBy.includes(criteria) &&
+                "bg-[#00bbfc] hover:bg-[#00bbfc]/50"
               }`}
               onClick={() => toggleSortBy(criteria)}
             >
-              {criteria === 'mostRecent' ? 'Most Recent' : 'Funding'}
+              {criteria === "mostRecent" ? "Most Recent" : "Funding"}
             </Button>
           ))}
         </div>
