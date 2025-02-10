@@ -49,15 +49,6 @@ export function FundingTypeDropdown({ onChange }) {
             <CommandEmpty>No Funding Type found.</CommandEmpty>
             <ScrollArea className="h-[200px]">
               <CommandGroup className="text-white border-none">
-                <CommandItem onSelect={() => handleSelect("all")} className="cursor-pointer mr-2">
-                  <Check
-                    className={cn(
-                      "mr-2 h-4 w-4",
-                      selectedValues.length === fundingTypes.length ? "opacity-100" : "opacity-0"
-                    )}
-                  />
-                  Select All
-                </CommandItem>
                 {fundingTypes.map((type) => (
                   <CommandItem
                     key={type.value}

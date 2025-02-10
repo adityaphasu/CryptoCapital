@@ -27,13 +27,15 @@ const GrantCard = ({ grant }) => {
       <div className="flex flex-col gap-3">
         <div className="flex flex-col md:flex-row md:items-center gap-3">
           <div className="flex items-center gap-3">
-            <img src={grant.images} alt="" className="size-11" />
+            <img
+              src={grant.images}
+              alt=""
+              className="size-11"
+            />
             <h3 className="text-lg font-semibold">{grant.grantProgramName}</h3>
           </div>
           <div className="flex justify-evenly md:justify-between flex-1 items-center">
-            <Badge className="bg-[#00bbfc] hover:bg-[#00bbfc]">
-              {grant.status}
-            </Badge>
+            <Badge className="bg-[#00bbfc] hover:bg-[#00bbfc]">{grant.status}</Badge>
             <span className="text-gray-400 text-[0.95rem]">{grant.date}</span>
           </div>
         </div>
@@ -41,7 +43,7 @@ const GrantCard = ({ grant }) => {
         <div className="flex flex-col md:flex-row justify-between gap-4">
           <div className="flex flex-col gap-2">
             <div className="flex text-gray-400 gap-2.5 text-[0.95rem]">
-              <span>
+              <span className="capitalize">
                 <span className="text-white font-semibold">Ecosystem: </span>
                 {grant.ecosystem}
               </span>
@@ -110,16 +112,7 @@ const GrantCard = ({ grant }) => {
                 {grant.totalFundingAvailable}
               </p>
             </div>
-          )}
-
-          <div className="flex flex-wrap gap-4">
-            {grant.fundingType && (
-              <div className="flex gap-2">
-                <h3 className="text-sm font-semibold">Funding Type:</h3>
-                <p className="text-gray-400 text-sm">{grant.fundingType}</p>
-              </div>
-            )}
-
+            
             {grant.minFunding && (
               <div className="flex gap-2">
                 <h3 className="text-sm font-semibold">Min Funding:</h3>
