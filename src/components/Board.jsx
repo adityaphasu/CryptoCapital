@@ -1,12 +1,15 @@
-import { useState } from "react";
+import React, { useEffect, useState } from 'react';
 import { Input } from "./ui/input";
 import { EcosystemDropdown } from "./EcosystemDropdown";
 import GrantCard from "./GrantCard";
 import { StatusDropdown } from "./StatusDropdown";
-import { grantPrograms } from "@/data/mockData";
 import { FundingTopicsDropdown } from "./FundingTopicsDropdown";
 import { FundingTypeDropdown } from "./FundingTypeDropdown";
 import { Button } from "./ui/button";
+
+const API_KEY = import.meta.env.VITE_API_KEY;
+const SHEET_ID = import.meta.env.VITE_SHEET_ID;
+const RANGE = import.meta.env.VITE_RANGE;
 
 const Board = () => {
   const [selectedEcosystems, setSelectedEcosystems] = useState([]);
@@ -14,42 +17,94 @@ const Board = () => {
   const [selectedFundingTopics, setSelectedFundingTopics] = useState([]);
   const [selectedFundingTypes, setSelectedFundingTypes] = useState([]);
   const [selectedSortBy, setSelectedSortBy] = useState([]);
+  const [grantPrograms, setGrantPrograms] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
-  // TODO: Implement Search for Search bar based on what you want the search to be based on.
-  // TODO: Implement Sort for Sort By buttons
+  const fetchGrants = async () => {
+    try {
+      const response = await fetch(
+        `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`
+      );
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch data');
+      }
 
-  // toggling the sortby buttons
-  const toggleSortBy = (criteria) => {
-    setSelectedSortBy((current) =>
-      current.includes(criteria)
-        ? current.filter((value) => value !== criteria)
-        : [...current, criteria]
-    );
+      const data = await response.json();
+      
+      if (data.values && data.values.length > 1) {
+        const headers = data.values[0];
+        const formattedData = data.values.slice(1).map((row) => {
+          const grant = headers.reduce((acc, header, index) => {
+            if (header === 'fundingTopics') {
+              acc[header] = row[index] ? row[index].split(',').map(topic => topic.trim().toLowerCase()) : [];
+            } else {
+              acc[header] = (row[index] || '').toLowerCase();
+            }
+            return acc;
+          }, {});
+          
+          return {
+            ...grant,
+            id: crypto.randomUUID()
+          };
+        });
+
+        setGrantPrograms(formattedData);
+      }
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  // filtering
-  const filteredGrants = grantPrograms.filter(
-    (grant) =>
-      (selectedEcosystems.length === 0 ||
-        selectedEcosystems.includes(grant.ecosystem.toLowerCase())) &&
-      (selectedStatuses.length === 0 || selectedStatuses.includes(grant.status.toLowerCase())) &&
-      (selectedFundingTopics.length === 0 ||
-        grant.fundingTopics.some((topic) => selectedFundingTopics.includes(topic.toLowerCase()))) &&
-      (selectedFundingTypes.length === 0 ||
-        selectedFundingTypes.includes(grant.fundingType.toLowerCase()))
-  );
-  // .sort(); // do sort logic here for the sort by buttons
+  useEffect(() => {
+    fetchGrants();
+  }, []);
+
+  const filteredAndSortedGrants = React.useMemo(() => {
+    let filtered = grantPrograms.filter(grant => 
+      (selectedEcosystems.length === 0 || selectedEcosystems.includes(grant.ecosystem)) &&
+      (selectedStatuses.length === 0 || selectedStatuses.includes(grant.status)) &&
+      (selectedFundingTopics.length === 0 || 
+        grant.fundingTopics.some(topic => selectedFundingTopics.includes(topic))) &&
+      (selectedFundingTypes.length === 0 || selectedFundingTypes.includes(grant.fundingType)) &&
+      (!searchQuery || 
+        grant.grantProgramName.toLowerCase().includes(searchQuery.toLowerCase()))
+    );
+
+    if (selectedSortBy.includes('mostRecent')) {
+      filtered = [...filtered].sort((a, b) => 
+        new Date(b.dateAdded || 0) - new Date(a.dateAdded || 0)
+      );
+    }
+    if (selectedSortBy.includes('funding')) {
+      filtered = [...filtered].sort((a, b) => 
+        Number(b.fundingAmount || 0) - Number(a.fundingAmount || 0)
+      );
+    }
+
+    return filtered;
+  }, [grantPrograms, selectedEcosystems, selectedStatuses, selectedFundingTopics, 
+      selectedFundingTypes, selectedSortBy, searchQuery]);
+
+  if (error) {
+    return <div className="text-red-500">Error: {error}</div>;
+  }
 
   return (
     <div>
       <div className="my-5 flex flex-col gap-4 p-5 rounded-lg justify-center backdrop-blur bg-white/5">
-        {/* Search Bar */}
-        <Input
-          placeholder="Search Grants..."
+        <Input 
+          placeholder="Search Grants..." 
           className="bg-[#151226]/50 border-[#151226] text-gray-400"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
 
-        {/* Filter Dropdowns */}
         <div className="flex flex-col gap-4 md:flex-row">
           <EcosystemDropdown onChange={setSelectedEcosystems} />
           <StatusDropdown onChange={setSelectedStatuses} />
@@ -57,31 +112,30 @@ const Board = () => {
           <FundingTypeDropdown onChange={setSelectedFundingTypes} />
         </div>
 
-        {/* Sort By Buttons */}
         <div className="ml-2 flex gap-3 items-center flex-wrap">
           <h3 className="font-semibold text-white">Sort By:</h3>
-          <Button
-            className={`h-auto bg-[#151226]/70 text-white hover:bg-[#151226] ${
-              selectedSortBy.includes("mostRecent") && "bg-[#00bbfc] hover:bg-[#00bbfc]/50"
-            }`}
-            onClick={() => toggleSortBy("mostRecent")}>
-            Most Recent
-          </Button>
-          <Button
-            className={`h-auto bg-[#151226]/70 text-white hover:bg-[#151226] ${
-              selectedSortBy.includes("funding") && "bg-[#00bbfc] hover:bg-[#00bbfc]/50"
-            }`}
-            onClick={() => toggleSortBy("funding")}>
-            Funding
-          </Button>
+          {['mostRecent', 'funding'].map((criteria) => (
+            <Button
+              key={criteria}
+              className={`h-auto bg-[#151226]/70 text-white hover:bg-[#151226] ${
+                selectedSortBy.includes(criteria) && "bg-[#00bbfc] hover:bg-[#00bbfc]/50"
+              }`}
+              onClick={() => toggleSortBy(criteria)}
+            >
+              {criteria === 'mostRecent' ? 'Most Recent' : 'Funding'}
+            </Button>
+          ))}
         </div>
       </div>
 
-      {/* Rendering the cards*/}
       <div className="grid grid-cols-1 gap-4">
-        {filteredGrants.map((grant) => (
-          <GrantCard key={grant.grantProgramName} grant={grant} />
-        ))}
+        {isLoading ? (
+          <div className="text-center">Loading...</div>
+        ) : (
+          filteredAndSortedGrants.map((grant) => (
+            <GrantCard key={grant.id} grant={grant} />
+          ))
+        )}
       </div>
     </div>
   );
