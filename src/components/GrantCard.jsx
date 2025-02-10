@@ -28,7 +28,7 @@ const GrantCard = ({ grant }) => {
         <div className="flex flex-col md:flex-row md:items-center gap-3">
           <div className="flex items-center gap-3">
             <img
-              src="https://www.google.com/s2/favicons?domain=https://thankarb.com/&sz=128"
+              src={grant.images}
               alt=""
               className="size-11"
             />
