@@ -11,6 +11,7 @@ body {
   font-family: "Inter Variable", sans-serif;
   background-image: url("/bg.svg"), linear-gradient(60deg, #431f54 0%, #151226 60%, #17254a 100%);
   background-size: 100%;
+  background-repeat: no-repeat, repeat;
   background-position: center, 0% 0%;
 }
 
