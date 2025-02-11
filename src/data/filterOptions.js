@@ -48,15 +48,13 @@ export const fundingTopics = [
 ];
 
 export const fundingTypes = [
-  { value: "AI-Blockchain Research Grants", label: "AI-Blockchain Research Grants" },
+  { value: "AI-BlockchainResearchGrants", label: "AI-Blockchain Research Grants" },
   { value: "Bounty-Based", label: "Bounty-Based" },
-  { value: "Hackathon Grants", label: "Hackathon Grants" },
-  { value: "Incubation & Acceleration", label: "Incubation & Acceleration" },
-  { value: "Matching Grants", label: "Matching Grants" },
-  { value: "Open Grants", label: "Open Grants" },
-  { value: "Public Goods Grants", label: "Public Goods Grants" },
-  { value: "Quadratic Funding", label: "Quadratic Funding" },
-  { value: "Retroactive Grants", label: "Retroactive Grants" },
-  { value: "Staking & Liquidity Incentives", label: "Staking & Liquidity Incentives" },
-  { value: "VC-backed", label: "VC-backed" }
+  { value: "HackathonGrants", label: "Hackathon Grants" },
+  { value: "IncubationAcceleration", label: "Incubation & Acceleration" },
+  { value: "MatchingGrants", label: "Matching Grants" },
+  { value: "OpenGrants", label: "Open Grants" },
+  { value: "QuadraticFunding", label: "Quadratic Funding" },
+  { value: "RetroactiveGrants", label: "Retroactive Grants" },
+  { value: "StakingLiquidityIncentives", label: "Staking & Liquidity Incentives" }
 ];

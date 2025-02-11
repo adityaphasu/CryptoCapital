@@ -39,13 +39,21 @@ const Board = () => {
         const formattedData = data.values.slice(1).map((row) => {
           const grant = headers.reduce((acc, header, index) => {
             acc[header] = row[index] || "";
-
             return acc;
           }, {});
 
           return {
             ...grant,
             id: crypto.randomUUID(),
+
+            // constructed new fields in the object for search purposes
+            searchFundingTopics: grant.fundingTopics
+              ? grant.fundingTopics.toLowerCase().replace(/\s+/g, "").split(",")
+              : [],
+
+            searchFundingType: grant.fundingType
+              ? grant.fundingType.toLowerCase().replace(/\s+/g, "")
+              : "",
           };
         });
 
@@ -63,23 +71,28 @@ const Board = () => {
   }, []);
 
   const filteredAndSortedGrants = React.useMemo(() => {
-    let filtered = grantPrograms.filter(
-      (grant) =>
+    let filtered = grantPrograms.filter((grant) => {
+      return (
         (selectedEcosystems.length === 0 ||
           selectedEcosystems.includes(grant.ecosystem)) &&
         (selectedStatuses.length === 0 ||
           selectedStatuses.includes(grant.status)) &&
         (selectedFundingTopics.length === 0 ||
-          grant.fundingTopics.some((topic) =>
-            selectedFundingTopics.includes(topic)
+          grant.searchFundingTopics.some((topic) =>
+            selectedFundingTopics
+              .map((t) => t.toLowerCase().replace(/\s+/g, ""))
+              .includes(topic)
           )) &&
         (selectedFundingTypes.length === 0 ||
-          selectedFundingTypes.includes(grant.fundingType)) &&
+          selectedFundingTypes
+            .map((t) => t.toLowerCase().replace(/\s+/g, ""))
+            .includes(grant.searchFundingType)) &&
         (!searchQuery ||
           grant.grantProgramName
             .toLowerCase()
             .includes(searchQuery.toLowerCase()))
-    );
+      );
+    });
 
     if (selectedSortBy.includes("mostRecent")) {
       filtered = [...filtered].sort(
