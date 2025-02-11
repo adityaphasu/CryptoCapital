@@ -154,7 +154,15 @@ const Board = () => {
                 selectedSortBy.includes(criteria) &&
                 "bg-[#00bbfc] hover:bg-[#00bbfc]/50"
               }`}
-              onClick={() => setSelectedSortBy(criteria)}
+              onClick={() =>
+                setSelectedSortBy((prev) => {
+                  if (prev.includes(criteria)) {
+                    return prev.filter((item) => item !== criteria);
+                  }
+
+                  return [...prev, criteria];
+                })
+              }
             >
               {criteria === "mostRecent" ? "Most Recent" : "Funding"}
             </Button>
