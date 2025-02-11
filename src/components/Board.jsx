@@ -95,14 +95,22 @@ const Board = () => {
     });
 
     if (selectedSortBy.includes("mostRecent")) {
-      filtered = [...filtered].sort(
-        (a, b) => new Date(b.dateAdded || 0) - new Date(a.dateAdded || 0)
-      );
+      filtered = [...filtered].sort((a, b) => {
+        const dateA = a.date ? new Date(a.date + "-01") : new Date(0);
+        const dateB = b.date ? new Date(b.date + "-01") : new Date(0);
+        return dateB - dateA;
+      });
     }
+
+    // highest first
     if (selectedSortBy.includes("funding")) {
-      filtered = [...filtered].sort(
-        (a, b) => Number(b.fundingAmount || 0) - Number(a.fundingAmount || 0)
-      );
+      filtered = [...filtered].sort((a, b) => {
+        const totalA = a.total ? Number(a.total.replace(/[$,]/g, "")) : 0;
+
+        const totalB = b.total ? Number(b.total.replace(/[$,]/g, "")) : 0;
+
+        return totalB - totalA;
+      });
     }
 
     return filtered;
@@ -146,7 +154,7 @@ const Board = () => {
                 selectedSortBy.includes(criteria) &&
                 "bg-[#00bbfc] hover:bg-[#00bbfc]/50"
               }`}
-              onClick={() => toggleSortBy(criteria)}
+              onClick={() => setSelectedSortBy(criteria)}
             >
               {criteria === "mostRecent" ? "Most Recent" : "Funding"}
             </Button>
