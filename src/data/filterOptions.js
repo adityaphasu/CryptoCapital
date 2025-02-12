@@ -15,7 +15,13 @@ export const ecosystems = [
   { value: "Polkadot", label: "Polkadot" },
   { value: "Ripple", label: "Ripple" },
   { value: "Stellar", label: "Stellar" },
-  { value: "XION", label: "XION" }
+  { value: "XION", label: "XION" },
+  { value: "Dfinity", label: "Difinity" },
+  { value: "TON", label: "TON" },
+  { value: "Solana", label: "Solana" },
+  { value: "Starknet", label: "Starknet" },
+{ value: "Polygon", label: "Polygon" }
+  
 ];
 
 export const statuses = [
