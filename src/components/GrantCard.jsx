@@ -3,37 +3,20 @@ import { CircleMinus, CirclePlus } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
-import { fundingTopics, fundingTypes } from "@/data/filterOptions";
 
 const GrantCard = ({ grant }) => {
   const [cardOpen, setCardOpen] = useState(false);
-
-  const createLabelsMap = (items) => {
-    return items.reduce((acc, item) => {
-      acc[item.value] = item.label;
-      return acc;
-    }, {});
-  };
-
-  const fundingTopicLabels = createLabelsMap(fundingTopics);
-  const fundingTypeLabels = createLabelsMap(fundingTypes);
-
-  const getLabels = (values, labelsMap) => {
-    return values.map((value) => labelsMap[value]).join(", ");
-  };
 
   return (
     <div className="rounded p-5 bg-[#151226]/10 text-white backdrop-blur-[3px] border border-purple-500/20">
       <div className="flex flex-col gap-3">
         <div className="flex flex-col md:flex-row md:items-center gap-3">
           <div className="flex items-center gap-3">
-            <img src={grant.images} alt="" className="size-11" />
+            <img src={grant.images} alt="" className="size-11 rounded" />
             <h3 className="text-lg font-semibold">{grant.grantProgramName}</h3>
           </div>
           <div className="flex justify-evenly md:justify-between flex-1 items-center">
-            <Badge className="bg-[#00bbfc] hover:bg-[#00bbfc]">
-              {grant.status}
-            </Badge>
+            <Badge className="bg-[#00bbfc] hover:bg-[#00bbfc]">{grant.status}</Badge>
             <span className="text-gray-400 text-[0.95rem]">{grant.date}</span>
           </div>
         </div>
@@ -45,15 +28,11 @@ const GrantCard = ({ grant }) => {
                 <span className="text-white font-semibold">Ecosystem: </span>
                 {grant.ecosystem}
               </span>
-              {grant.total && (
-                <Separator orientation="vertical" className="bg-gray-400" />
-              )}
+              {grant.total && <Separator orientation="vertical" className="bg-gray-400" />}
 
               {grant.total && (
                 <span>
-                  <span className="text-white font-semibold">
-                    Total Funding:{" "}
-                  </span>
+                  <span className="text-white font-semibold">Total Funding: </span>
                   {grant.total}
                 </span>
               )}
@@ -61,10 +40,7 @@ const GrantCard = ({ grant }) => {
             {grant.fundingTopics && (
               <div>
                 <h3 className="text-sm font-semibold">Topics for Funding:</h3>
-                <p className="text-gray-400 text-sm">
-                  {/* {getLabels(grant.fundingTopics, fundingTopicLabels)} */}
-                  {grant.fundingTopics}
-                </p>
+                <p className="text-gray-400 text-sm">{grant.fundingTopics}</p>
               </div>
             )}
           </div>
@@ -72,8 +48,7 @@ const GrantCard = ({ grant }) => {
             <Button
               variant="ghost"
               className="p-0 group [&_svg]:size-7 hover:bg-transparent"
-              onClick={() => setCardOpen(!cardOpen)}
-            >
+              onClick={() => setCardOpen(!cardOpen)}>
               {cardOpen ? (
                 <CircleMinus className="text-[#00bbfc] group-hover:text-white  transition-colors" />
               ) : (
@@ -82,8 +57,7 @@ const GrantCard = ({ grant }) => {
             </Button>
             <a
               href={grant.website}
-              className="bg-[#00bbfc] text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-sky-600 transition-colors"
-            >
+              className="bg-[#00bbfc] text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-sky-600 transition-colors">
               Apply
             </a>
           </div>
@@ -106,9 +80,7 @@ const GrantCard = ({ grant }) => {
           {grant.totalFundingAvailable && (
             <div className="flex flex-col">
               <h3 className="text-sm font-semibold">Funding Detail:</h3>
-              <p className="text-gray-400 text-sm">
-                {grant.totalFundingAvailable}
-              </p>
+              <p className="text-gray-400 text-sm">{grant.totalFundingAvailable}</p>
             </div>
           )}
           {grant.minFunding && (
