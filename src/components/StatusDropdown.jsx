@@ -22,11 +22,17 @@ export function StatusDropdown({ onChange }) {
   }, [selectedValues, onChange]);
 
   const handleSelect = (currentValue) => {
-    setSelectedValues((current) =>
-      current.includes(currentValue)
-        ? current.filter((value) => value !== currentValue)
-        : [...current, currentValue]
-    );
+    if (currentValue === "all") {
+      setSelectedValues(
+        selectedValues.length === statuses.length ? [] : statuses.map((b) => b.value)
+      );
+    } else {
+      setSelectedValues((current) =>
+        current.includes(currentValue)
+          ? current.filter((value) => value !== currentValue)
+          : [...current, currentValue]
+      );
+    }
   };
 
   return (
@@ -47,6 +53,15 @@ export function StatusDropdown({ onChange }) {
           <CommandList>
             <CommandEmpty>No status found.</CommandEmpty>
             <CommandGroup className="text-white border-none">
+              <CommandItem onSelect={() => handleSelect("all")} className="cursor-pointer mr-2">
+                <Check
+                  className={cn(
+                    "mr-2 h-4 w-4",
+                    selectedValues.length === statuses.length ? "opacity-100" : "opacity-0"
+                  )}
+                />
+                Select All
+              </CommandItem>
               {statuses.map((status) => (
                 <CommandItem
                   key={status.value}

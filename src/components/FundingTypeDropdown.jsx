@@ -23,11 +23,17 @@ export function FundingTypeDropdown({ onChange }) {
   }, [selectedValues, onChange]);
 
   const handleSelect = (currentValue) => {
-    setSelectedValues((current) =>
-      current.includes(currentValue)
-        ? current.filter((value) => value !== currentValue)
-        : [...current, currentValue]
-    );
+    if (currentValue === "all") {
+      setSelectedValues(
+        selectedValues.length === fundingTypes.length ? [] : fundingTypes.map((b) => b.value)
+      );
+    } else {
+      setSelectedValues((current) =>
+        current.includes(currentValue)
+          ? current.filter((value) => value !== currentValue)
+          : [...current, currentValue]
+      );
+    }
   };
 
   return (
@@ -49,6 +55,15 @@ export function FundingTypeDropdown({ onChange }) {
             <CommandEmpty>No Funding Type found.</CommandEmpty>
             <ScrollArea className="h-[200px]">
               <CommandGroup className="text-white border-none">
+                <CommandItem onSelect={() => handleSelect("all")} className="cursor-pointer mr-2">
+                  <Check
+                    className={cn(
+                      "mr-2 h-4 w-4",
+                      selectedValues.length === fundingTypes.length ? "opacity-100" : "opacity-0"
+                    )}
+                  />
+                  Select All
+                </CommandItem>
                 {fundingTypes.map((type) => (
                   <CommandItem
                     key={type.value}
