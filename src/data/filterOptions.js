@@ -37,7 +37,7 @@ export const fundingTopics = [
   { value: "Data & Oracles", label: "Data & Oracles" },
   { value: "DeFi", label: "DeFi" },
   { value: "DePIN", label: "DePIN" },
-  { value: "Developer Tooling", label: "Developer Tooling" },
+  { value: "DevTooling", label: "Developer Tooling" },
   { value: "Education", label: "Education" },
   { value: "Gaming & Metaverse", label: "Gaming & Metaverse" },
   { value: "Infrastructure", label: "Infrastructure" },
