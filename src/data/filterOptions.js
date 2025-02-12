@@ -39,14 +39,14 @@ export const fundingTopics = [
   { value: "DePIN", label: "DePIN" },
   { value: "DevTooling", label: "Developer Tooling" },
   { value: "Education", label: "Education" },
-  { value: "Gaming & Metaverse", label: "Gaming & Metaverse" },
-  { value: "Infrastructure", label: "Infrastructure" },
-  { value: "NFTs & Creator Economy", label: "NFTs & Creator Economy" },
+  { value: "Gaming", label: "Gaming & Metaverse" },
+  { value: "Infra", label: "Infrastructure" },
+  { value: "NFTs", label: "NFTs & Creator Economy" },
   { value: "Privacy & Security", label: "Privacy & Security" },
-  { value: "Public Goods & Open Source", label: "Public Goods & Open Source" },
+  { value: "PublicGoods", label: "Public Goods & Open Source" },
   { value: "Social & Community", label: "Social & Community" },
   { value: "Stablecoins & Payments", label: "Stablecoins & Payments" },
-  { value: "Zero Knowledge", label: "Zero Knowledge (ZK)" }
+  { value: "ZK", label: "Zero Knowledge (ZK)" }
 ];
 
 export const fundingTypes = [
