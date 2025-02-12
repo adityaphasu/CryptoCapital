@@ -58,6 +58,7 @@ const Board = () => {
         });
 
         setGrantPrograms(formattedData);
+        console.log(formattedData);
       }
     } catch (err) {
       setError(err.message);
@@ -71,6 +72,7 @@ const Board = () => {
   }, []);
 
   const filteredAndSortedGrants = React.useMemo(() => {
+    console.log("grantPrograms: ", grantPrograms);
     let filtered = grantPrograms.filter((grant) => {
       return (
         (selectedEcosystems.length === 0 ||
@@ -88,9 +90,20 @@ const Board = () => {
             .map((t) => t.toLowerCase().replace(/\s+/g, ""))
             .includes(grant.searchFundingType)) &&
         (!searchQuery ||
-          grant.grantProgramName
-            .toLowerCase()
-            .includes(searchQuery.toLowerCase()))
+          [
+            grant.grantProgramName,
+            grant.description,
+            grant.topicsForFunding,
+            grant.fundingTopics,
+            grant.fundingType,
+          ]
+            .filter(Boolean) // filters undefined/null values
+            .some(
+              (field) =>
+                field.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                // for variation searching
+                new RegExp(`\\b${searchQuery}`, "i").test(field)
+            ))
       );
     });
 
