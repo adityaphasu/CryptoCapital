@@ -58,7 +58,6 @@ const Board = () => {
         });
 
         setGrantPrograms(formattedData);
-        console.log(formattedData);
       }
     } catch (err) {
       setError(err.message);
@@ -72,7 +71,6 @@ const Board = () => {
   }, []);
 
   const filteredAndSortedGrants = React.useMemo(() => {
-    console.log("grantPrograms: ", grantPrograms);
     let filtered = grantPrograms.filter((grant) => {
       return (
         (selectedEcosystems.length === 0 ||
