@@ -23,11 +23,17 @@ export function EcosystemDropdown({ onChange }) {
   }, [selectedValues, onChange]);
 
   const handleSelect = (currentValue) => {
-    setSelectedValues((current) =>
-      current.includes(currentValue)
-        ? current.filter((value) => value !== currentValue)
-        : [...current, currentValue]
-    );
+    if (currentValue === "all") {
+      setSelectedValues(
+        selectedValues.length === ecosystems.length ? [] : ecosystems.map((b) => b.value)
+      );
+    } else {
+      setSelectedValues((current) =>
+        current.includes(currentValue)
+          ? current.filter((value) => value !== currentValue)
+          : [...current, currentValue]
+      );
+    }
   };
 
   return (
@@ -49,6 +55,15 @@ export function EcosystemDropdown({ onChange }) {
             <CommandEmpty>No Ecosystem found.</CommandEmpty>
             <ScrollArea className="h-[200px]">
               <CommandGroup className="text-white border-none">
+                <CommandItem onSelect={() => handleSelect("all")} className="cursor-pointer mr-2">
+                  <Check
+                    className={cn(
+                      "mr-2 h-4 w-4",
+                      selectedValues.length === ecosystems.length ? "opacity-100" : "opacity-0"
+                    )}
+                  />
+                  Select All
+                </CommandItem>
                 {ecosystems.map((ecosystem) => (
                   <CommandItem
                     key={ecosystem.value}

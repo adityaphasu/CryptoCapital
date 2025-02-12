@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { ScrollArea } from "./ui/scroll-area";
-import { fundingTopics } from "@/data/filterOptions";
+import { fundingTopics, fundingTypes } from "@/data/filterOptions";
 
 export function FundingTopicsDropdown({ onChange }) {
   const [open, setOpen] = useState(false);
@@ -23,11 +23,17 @@ export function FundingTopicsDropdown({ onChange }) {
   }, [selectedValues, onChange]);
 
   const handleSelect = (currentValue) => {
-    setSelectedValues((current) =>
-      current.includes(currentValue)
-        ? current.filter((value) => value !== currentValue)
-        : [...current, currentValue]
-    );
+    if (currentValue === "all") {
+      setSelectedValues(
+        selectedValues.length === fundingTopics.length ? [] : fundingTopics.map((b) => b.value)
+      );
+    } else {
+      setSelectedValues((current) =>
+        current.includes(currentValue)
+          ? current.filter((value) => value !== currentValue)
+          : [...current, currentValue]
+      );
+    }
   };
 
   return (
@@ -49,6 +55,15 @@ export function FundingTopicsDropdown({ onChange }) {
             <CommandEmpty>No Funding Topic found.</CommandEmpty>
             <ScrollArea className="h-[200px]">
               <CommandGroup className="text-white border-none">
+                <CommandItem onSelect={() => handleSelect("all")} className="cursor-pointer mr-2">
+                  <Check
+                    className={cn(
+                      "mr-2 h-4 w-4",
+                      selectedValues.length === fundingTypes.length ? "opacity-100" : "opacity-0"
+                    )}
+                  />
+                  Select All
+                </CommandItem>
                 {fundingTopics.map((topic) => (
                   <CommandItem
                     key={topic.value}
