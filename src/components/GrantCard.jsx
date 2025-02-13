@@ -17,7 +17,7 @@ const GrantCard = ({ grant }) => {
           </div>
           <div className="flex justify-evenly md:justify-between flex-1 items-center">
             <Badge className="bg-[#00bbfc] hover:bg-[#00bbfc]">{grant.status}</Badge>
-            <span className="text-gray-400 text-[0.95rem]">{grant.date}</span>
+            
           </div>
         </div>
 
