@@ -6,6 +6,7 @@ import { StatusDropdown } from "./StatusDropdown";
 import { FundingTopicsDropdown } from "./FundingTopicsDropdown";
 import { FundingTypeDropdown } from "./FundingTypeDropdown";
 import { Button } from "./ui/button";
+import { RotateCcw } from "lucide-react";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 const SHEET_ID = import.meta.env.VITE_SHEET_ID;
@@ -73,15 +74,11 @@ const Board = () => {
   const filteredAndSortedGrants = React.useMemo(() => {
     let filtered = grantPrograms.filter((grant) => {
       return (
-        (selectedEcosystems.length === 0 ||
-          selectedEcosystems.includes(grant.ecosystem)) &&
-        (selectedStatuses.length === 0 ||
-          selectedStatuses.includes(grant.status)) &&
+        (selectedEcosystems.length === 0 || selectedEcosystems.includes(grant.ecosystem)) &&
+        (selectedStatuses.length === 0 || selectedStatuses.includes(grant.status)) &&
         (selectedFundingTopics.length === 0 ||
           grant.searchFundingTopics.some((topic) =>
-            selectedFundingTopics
-              .map((t) => t.toLowerCase().replace(/\s+/g, ""))
-              .includes(topic)
+            selectedFundingTopics.map((t) => t.toLowerCase().replace(/\s+/g, "")).includes(topic)
           )) &&
         (selectedFundingTypes.length === 0 ||
           selectedFundingTypes
@@ -144,50 +141,76 @@ const Board = () => {
       <div className="my-5 flex flex-col gap-4 p-5 rounded-lg justify-center backdrop-blur bg-white/5">
         <Input
           placeholder="Search Grants..."
-          className="bg-[#151226]/50 border-[#151226] text-gray-400"
+          className="bg-[#151226]/50 border-[#151226] text-white"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
 
         <div className="flex flex-col gap-4 md:flex-row">
-          <EcosystemDropdown onChange={setSelectedEcosystems} />
-          <StatusDropdown onChange={setSelectedStatuses} />
-          <FundingTopicsDropdown onChange={setSelectedFundingTopics} />
-          <FundingTypeDropdown onChange={setSelectedFundingTypes} />
+          <EcosystemDropdown
+            selectedValues={selectedEcosystems}
+            setSelectedValues={setSelectedEcosystems}
+          />
+          <StatusDropdown
+            selectedValues={selectedStatuses}
+            setSelectedValues={setSelectedStatuses}
+          />
+          <FundingTopicsDropdown
+            selectedValues={selectedFundingTopics}
+            setSelectedValues={setSelectedFundingTopics}
+          />
+          <FundingTypeDropdown
+            selectedValues={selectedFundingTypes}
+            setSelectedValues={setSelectedFundingTypes}
+          />
         </div>
 
-        <div className="ml-2 flex gap-3 items-center flex-wrap">
-          <h3 className="font-semibold text-white">Sort By:</h3>
-          {["funding"].map((criteria) => (
-            <Button
-              key={criteria}
-              className={`h-auto bg-[#151226]/70 text-white hover:bg-[#151226] ${
-                selectedSortBy.includes(criteria) &&
-                "bg-[#00bbfc] hover:bg-[#00bbfc]/50"
-              }`}
-              onClick={() =>
-                setSelectedSortBy((prev) => {
-                  if (prev.includes(criteria)) {
-                    return prev.filter((item) => item !== criteria);
-                  }
+        <div className="flex justify-between items-center flex-wrap gap-3">
+          <div className="ml-2 flex gap-3 items-center flex-wrap">
+            <h3 className="font-semibold text-white">Sort By:</h3>
+            {["funding"].map((criteria) => (
+              <Button
+                key={criteria}
+                className={`h-auto bg-[#151226]/70 text-white hover:bg-[#151226] ${
+                  selectedSortBy.includes(criteria) && "bg-[#00bbfc] hover:bg-[#00bbfc]/50"
+                }`}
+                onClick={() =>
+                  setSelectedSortBy((prev) => {
+                    if (prev.includes(criteria)) {
+                      return prev.filter((item) => item !== criteria);
+                    }
 
-                  return [...prev, criteria];
-                })
-              }
-            >
-              {criteria === "mostRecent" ? "Most Recent" : "Funding"}
-            </Button>
-          ))}
+                    return [...prev, criteria];
+                  })
+                }>
+                {criteria === "mostRecent" ? "Most Recent" : "Funding"}
+              </Button>
+            ))}
+          </div>
+          <Button
+            className="bg-red-500 h-auto hover:bg-red-900"
+            onClick={() => {
+              console.log("reset");
+              setSelectedEcosystems([]);
+              setSelectedStatuses([]);
+              setSelectedFundingTopics([]);
+              setSelectedFundingTypes([]);
+              setSelectedSortBy([]);
+              setSearchQuery("");
+            }}>
+            <RotateCcw />
+            Reset Filters
+          </Button>
         </div>
       </div>
 
       <div className="grid grid-cols-1 gap-4">
         {isLoading ? (
           <div className="text-center">Loading...</div>
+        ) : filteredAndSortedGrants.length === 0 ? (
+          <div className="text-center text-white text-xl py-6">No grants found.</div>
         ) : (
-          filteredAndSortedGrants.map((grant) => (
-            <GrantCard key={grant.id} grant={grant} />
-          ))
+          filteredAndSortedGrants.map((grant) => <GrantCard key={grant.id} grant={grant} />)
         )}
       </div>
     </div>

@@ -14,13 +14,12 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { ScrollArea } from "./ui/scroll-area";
 import { ecosystems } from "@/data/filterOptions";
 
-export function EcosystemDropdown({ onChange }) {
+export function EcosystemDropdown({ selectedValues, setSelectedValues }) {
   const [open, setOpen] = useState(false);
-  const [selectedValues, setSelectedValues] = useState([]);
 
   useEffect(() => {
-    onChange(selectedValues);
-  }, [selectedValues, onChange]);
+    setSelectedValues(selectedValues);
+  }, [selectedValues, setSelectedValues]);
 
   const handleSelect = (currentValue) => {
     if (currentValue === "all") {
@@ -44,7 +43,7 @@ export function EcosystemDropdown({ onChange }) {
           role="combobox"
           aria-expanded={open}
           className="justify-between bg-[#151226]/70 text-white hover:bg-[#151226] hover:text-white border-[#151226]">
-          <span>Ecosystem</span>
+          <span>Ecosystem {selectedValues?.length > 0 && `(${selectedValues.length})`}</span>
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -59,7 +58,7 @@ export function EcosystemDropdown({ onChange }) {
                   <Check
                     className={cn(
                       "mr-2 h-4 w-4",
-                      selectedValues.length === ecosystems.length ? "opacity-100" : "opacity-0"
+                      selectedValues?.length === ecosystems.length ? "opacity-100" : "opacity-0"
                     )}
                   />
                   Select All
@@ -72,7 +71,7 @@ export function EcosystemDropdown({ onChange }) {
                     <Check
                       className={cn(
                         "mr-2 h-4 w-4",
-                        selectedValues.includes(ecosystem.value) ? "opacity-100" : "opacity-0"
+                        selectedValues?.includes(ecosystem.value) ? "opacity-100" : "opacity-0"
                       )}
                     />
                     {ecosystem.label}
