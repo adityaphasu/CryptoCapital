@@ -175,7 +175,7 @@ const Board = () => {
                 })
               }
             >
-{          {criteria === "mostRecent" ? {criteria === "mostRecent" ? } }
+{          {criteria === "mostRecent" ? "Most Recent" : "Funding" } }
             </Button>
           ))}
         </div>
