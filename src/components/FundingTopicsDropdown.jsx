@@ -44,7 +44,7 @@ export function FundingTopicsDropdown({ onChange }) {
           role="combobox"
           aria-expanded={open}
           className="justify-between bg-[#151226]/70 text-white hover:bg-[#151226] hover:text-white border-[#151226]">
-          <span>Funding Categories</span>
+          <span>Categories</span>
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
