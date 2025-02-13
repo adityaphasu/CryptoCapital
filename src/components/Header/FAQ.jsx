@@ -73,7 +73,9 @@ const FAQ = () => {
               </h3>
               <p className="text-sm text-white/70">
                 Absolutely! If you’re aware of an active or upcoming Web3 grant program that isn’t
-                listed here, we’d love to hear about it. Please email us the details at{" "}
+                listed here, we’d love to hear about it. Please <a href="https://docs.google.com/forms/d/e/1FAIpQLSewB2GaJXyWY5m1de5zw-vnP4KotEtHu6sujaDWP9tWaoAquw/viewform"
+                  target="_blank"
+                  className="text-blue-500 hover:underline" >fill in this form </a> or email us the details at{" "}
                 <a href="mailto:marianna@cornarolabs.xyz" className="text-blue-500">
                   marianna@cornarolabs.xyz
                 </a>
