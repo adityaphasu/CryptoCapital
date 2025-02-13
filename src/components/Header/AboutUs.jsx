@@ -148,9 +148,9 @@ const AboutUs = () => {
           Built with ❤️ by  <a
                   href="https://workpadhq.com/"
                   target="_blank"
-                  hover:underline">
+                  hover:underline>
                 
-                WorkPadHQ team</a> 
+                WorkPadHQ team </a> 
         </p>
       </DialogContent>
     </Dialog>
