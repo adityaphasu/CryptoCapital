@@ -158,7 +158,7 @@ const Board = () => {
 
         <div className="ml-2 flex gap-3 items-center flex-wrap">
           <h3 className="font-semibold text-white">Sort By:</h3>
-          {["mostRecent", "funding"].map((criteria) => (
+          {["funding"].map((criteria) => (
             <Button
               key={criteria}
               className={`h-auto bg-[#151226]/70 text-white hover:bg-[#151226] ${
@@ -175,7 +175,7 @@ const Board = () => {
                 })
               }
             >
-{/* {          {criteria === "mostRecent" ? "Most Recent" : "Funding" } } */}
+{/* {{          {criteria === "mostRecent" ? "Most Recent" : "Funding" } }  */}
             </Button>
           ))}
         </div>
