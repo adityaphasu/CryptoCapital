@@ -145,7 +145,12 @@ const AboutUs = () => {
           </div>
         </ScrollArea>
         <p className="text-lg text-center text-white font-semibold">
-          Built with ❤️ by WorkPadHQ team
+          Built with ❤️ by  <a
+                  href="https://workpadhq.com/"
+                  target="_blank"
+                  hover:underline">
+                
+                WorkPadHQ team</a> 
         </p>
       </DialogContent>
     </Dialog>
