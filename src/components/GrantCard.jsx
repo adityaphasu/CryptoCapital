@@ -39,7 +39,7 @@ const GrantCard = ({ grant }) => {
             </div>
             {grant.fundingTopics && (
               <div>
-                <h3 className="text-sm font-semibold">Topics for Funding:</h3>
+                <h3 className="text-sm font-semibold">Categories:</h3>
                 <p className="text-gray-400 text-sm">{grant.fundingTopics}</p>
               </div>
             )}
