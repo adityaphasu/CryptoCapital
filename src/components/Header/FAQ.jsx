@@ -100,9 +100,7 @@ const FAQ = () => {
             <div>
               <h3 className="text-lg font-semibold">Q. Is this database free to use?</h3>
               <p className="text-sm text-white/70">
-                YES! Our goal is to support the Web3 ecosystem by providing open access to funding
-                opportunities. However, if you’d like to support our work and the community,
-                consider sharing the database!
+               CL Web3 Grants offers core features such as the grants database and AI-powered matching tool for free, with premium services available for those needing deeper support. This two-tier model ensures broad access to valuable knowledge while providing advanced strategic guidance and resources to drive decentralization and innovation.
                 For projects seeking hands-on support, Cornaro Labs provides expert consulting services to help Web3 teams secure funding, navigate grant opportunities, and optimize their applications. <a href="https://calendly.com/cornarolabs"
                   target="_blank"
                   className="text-blue-500 hover:underline">Book your free consultation today!</a>
