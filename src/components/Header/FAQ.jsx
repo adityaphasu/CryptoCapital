@@ -101,6 +101,10 @@ const FAQ = () => {
                 YES! Our goal is to support the Web3 ecosystem by providing open access to funding
                 opportunities. However, if you’d like to support our work and the community,
                 consider sharing the database!
+                For projects seeking hands-on support, Cornaro Labs provides expert consulting services to help Web3 teams secure funding, navigate grant opportunities, and optimize their applications. <a href="https://calendly.com/cornarolabs"
+                  target="_blank"
+                  className="text-blue-500 hover:underline">Book your free consultation today!</a>
+
               </p>
             </div>
 
