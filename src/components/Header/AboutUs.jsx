@@ -10,7 +10,12 @@ const coreFeatures = [
       "Access the most extensive and up-to-date database of grant opportunities, updated every 48 hours. Stay ahead with real-time updates on new funding programs, eligibility criteria, and deadlines.",
   },
   {
-    title: "AI-Powered Grant Matching (Coming Soon)",
+    title: "AI-Powered Grant Matching <a
+                  href="https://tally.so/r/wb6d0o"
+                  target="_blank"
+                  className="text-blue-500 hover:underline">
+                  (Coming Soon)
+                </a>",
     description:
       "No more searching through endless programs—just fill out a simple form, and our AI-backed tool will match you with the most suitable grant opportunities for your project.",
   },
