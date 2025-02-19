@@ -10,22 +10,41 @@ const coreFeatures = [
       "Access the most extensive and up-to-date database of grant opportunities, updated every 48 hours. Stay ahead with real-time updates on new funding programs, eligibility criteria, and deadlines.",
   },
   {
-    title: "AI-Powered Grant Matching <a
-                  href="https://tally.so/r/wb6d0o"
-                  target="_blank"
-                  className="text-blue-500 hover:underline">
-                  (Coming Soon)
-                </a>",
+    title: "AI-Powered Grant Matching {" "}
+        <a 
+          href="hhttps://tally.so/r/wb6d0o" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-blue-500 underline"
+        >
+          (Coming Soon)
+        </a>,
     description:
       "No more searching through endless programs—just fill out a simple form, and our AI-backed tool will match you with the most suitable grant opportunities for your project.",
   },
   {
-    title: "Data-Driven Grant Analytics (Coming Soon)",
+    title: "Data-Driven Grant Analytics {" "}
+        <a 
+          href="https://tally.so/r/wb6d0o" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-blue-500 underline"
+        >
+          (Coming Soon)
+        </a>",
     description:
       "Gain strategic insights with our analytics tools. Assess grant program strengths, identify gaps, and measure the impact of funded projects. Designed for builders and funding protocols looking to optimize grant allocation.",
   },
   {
-    title: "Expanding Beyond Web3 (Coming Soon)",
+    title: "Expanding Beyond Web3 {" "}
+        <a 
+          href="https://tally.so/r/wb6d0o" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-blue-500 underline"
+        >
+          (Coming Soon)
+        </a>",
     description:
       "While our platform focuses on Web3 projects and ecosystem grants, we are expanding to integrate and analyze institutional funding sources and broader grant categories—bridging the gap between Web3 and traditional funding to help builders and protocols diversify funding strategies and make data-backed decisions for long-term growth.",
   },
