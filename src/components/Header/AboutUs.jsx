@@ -176,4 +176,19 @@ const AboutUs = () => {
                     <p className="text-sm ml-4">{member.role}</p>
                   </div>
                 ))}
-             
+              </div>
+            </div>
+          </div>
+        </ScrollArea>
+        <p className="text-lg text-center text-white font-semibold">
+          Built with ❤️ by{" "}
+          <a href="https://workpadhq.com/" target="_blank" className="text-blue-500 hover:underline">
+            WorkPadHQ team
+          </a>
+        </p>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
+export default AboutUs;
