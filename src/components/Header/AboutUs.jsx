@@ -10,10 +10,9 @@ const coreFeatures = [
       "Access the most extensive and up-to-date database of grant opportunities, updated every 48 hours. Stay ahead with real-time updates on new funding programs, eligibility criteria, and deadlines.",
   },
   {
-    title: "AI-Powered Grant Matching",
-    description: (
+    title: (
       <>
-        No more searching through endless programs—just fill out a simple form, and our AI-backed tool will match you with the most suitable grant opportunities for your project.{" "}
+        AI-Powered Grant Matching{" "}
         <a
           href="https://tally.so/r/wb6d0o"
           target="_blank"
@@ -24,12 +23,13 @@ const coreFeatures = [
         </a>
       </>
     ),
+    description:
+      "No more searching through endless programs—just fill out a simple form, and our AI-backed tool will match you with the most suitable grant opportunities for your project.",
   },
   {
-    title: "Data-Driven Grant Analytics",
-    description: (
+    title: (
       <>
-        Gain strategic insights with our analytics tools. Assess grant program strengths, identify gaps, and measure the impact of funded projects. Designed for builders and funding protocols looking to optimize grant allocation.{" "}
+        Data-Driven Grant Analytics{" "}
         <a
           href="https://tally.so/r/wb6d0o"
           target="_blank"
@@ -40,12 +40,13 @@ const coreFeatures = [
         </a>
       </>
     ),
+    description:
+      "Gain strategic insights with our analytics tools. Assess grant program strengths, identify gaps, and measure the impact of funded projects. Designed for builders and funding protocols looking to optimize grant allocation.",
   },
   {
-    title: "Expanding Beyond Web3",
-    description: (
+    title: (
       <>
-        While our platform focuses on Web3 projects and ecosystem grants, we are expanding to integrate and analyze institutional funding sources and broader grant categories—bridging the gap between Web3 and traditional funding to help builders and protocols diversify funding strategies and make data-backed decisions for long-term growth.{" "}
+        Expanding Beyond Web3{" "}
         <a
           href="https://tally.so/r/wb6d0o"
           target="_blank"
@@ -56,6 +57,8 @@ const coreFeatures = [
         </a>
       </>
     ),
+    description:
+      "While our platform focuses on Web3 projects and ecosystem grants, we are expanding to integrate and analyze institutional funding sources and broader grant categories—bridging the gap between Web3 and traditional funding to help builders and protocols diversify funding strategies and make data-backed decisions for long-term growth.",
   },
 ];
 
@@ -108,7 +111,7 @@ const AboutUs = () => {
               </a>{" "}
               is designed{" "}
               <span className="font-semibold text-slate-50">
-                to revolutionize how Web3 grant programs are accessed, managed and analyzed.
+                to revolutionize how Web3 grant programs are accessed, managed, and analyzed.
               </span>
               The platform is built in collaboration with{" "}
               <a
