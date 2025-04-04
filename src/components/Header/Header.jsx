@@ -4,7 +4,7 @@ import FAQ from "./FAQ";
 const Header = () => {
   return (
     <header className="px-6 py-3 backdrop-blur-md bg-[#151226]/35 text-white fixed w-full z-10 shadow border-b border-gray-600 rounded-b-3xl">
-      <nav className="flex flex-col md:flex-row justify-between items-center">
+      <nav className="flex flex-col md:flex-row justify-between items-center lg:w-[90%] mx-auto 2xl:w-[80%] 3xl:w-[65%]">
         <div className="w-72 lg:w-52">
           <a href="https://www.cornarolabs.xyz" target="_blank" rel="noreferrer">
             <img src="./logo.png" alt="" />
