@@ -8,8 +8,8 @@ function App() {
       <main className="flex flex-col items-center justify-center pt-40 lg:pt-32 pb-5">
         <div className="flex flex-col items-center space-y-4">
           <h1 className="text-4xl font-medium text-center">CL Web3 Grants Dashboard</h1>
-          <p className="text-[#ffffff7a] max-w-[47rem] text-center px-4">
-            Empowering Web3 projects with a dynamic grant database of over 80 opportunities.
+          <p className="text-[#ffffff7a] max-w-[55rem] text-center px-4">
+            A public good initiative empowering Web3 projects through a dynamic grant database of over 100 opportunities.
             <br />
             The database is updated every 48 hours to ensure the most accurate and active
             opportunities.

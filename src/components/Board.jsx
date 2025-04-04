@@ -188,7 +188,7 @@ const Board = () => {
             ))}
           </div>
           <Button
-            className="bg-red-500 h-auto hover:bg-red-900"
+            className="bg-[#151226]/70 h-auto hover:bg-[#151226]"
             onClick={() => {
               console.log("reset");
               setSelectedEcosystems([]);

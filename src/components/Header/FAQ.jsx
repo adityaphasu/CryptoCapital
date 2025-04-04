@@ -23,7 +23,7 @@ const FAQ = () => {
               <h3 className="text-lg font-semibold">Q. How can I navigate the database?</h3>
               <p className="text-sm text-white/70">
                 You can filter grant opportunities by ecosystem, topics for funding, and active or
-                upcoming opportunities. Make sure to scroll through the table vertically to view all
+                upcoming opportunities. Make sure to scroll through the page to view all
                 opportunities.
               </p>
             </div>
@@ -85,20 +85,18 @@ const FAQ = () => {
 
             <div>
               <h3 className="text-lg font-semibold">
-                Q. Is this the final version of the database?
+                Q. Is this the final version of the dashboard?
               </h3>
               <p className="text-sm text-white/70">
-                Not at all! This is just version 1 of what we are building—simple yet functional. We
-                wanted to share it with the community as{" "}
+                Not at all! This is just version 1 of what we are building—simple yet functional. Stay tuned for a more advanced version{" "}
                 <span className="font-semibold text-slate-50">
-                  we continue to work on a more advanced and polished version that will include
-                  additional features and improvements. Stay tuned for updates!
+                  that will include additional features and improvements such as the AI-powered Grant Matching and the Data-Driven Grant Analytics features.
                 </span>
               </p>
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold">Q. Is this database free to use?</h3>
+              <h3 className="text-lg font-semibold">Q. Is this dashboard free to use?</h3>
               <p className="text-sm text-white/70">
                CL Web3 Grants offers core features such as the grants database and AI-powered matching tool for free, with premium services available for those needing deeper support. This two-tier model ensures broad access to valuable knowledge while providing advanced strategic guidance and resources to drive decentralization and innovation.
                 For projects seeking hands-on support, Cornaro Labs provides expert consulting services to help Web3 teams secure funding, navigate grant opportunities, and optimize their applications. <a href="https://calendly.com/cornarolabs"

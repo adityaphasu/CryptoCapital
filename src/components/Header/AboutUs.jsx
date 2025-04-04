@@ -10,17 +10,53 @@ const coreFeatures = [
       "Access the most extensive and up-to-date database of grant opportunities, updated every 48 hours. Stay ahead with real-time updates on new funding programs, eligibility criteria, and deadlines.",
   },
   {
-    title: "AI-Powered Grant Matching (Coming Soon)",
+    title: (
+      <>
+        AI-Powered Grant Matching{" "}
+        <a
+          href="https://tally.so/r/wb6d0o"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-500 underline"
+        >
+          (Coming Soon)
+        </a>
+      </>
+    ),
     description:
       "No more searching through endless programs—just fill out a simple form, and our AI-backed tool will match you with the most suitable grant opportunities for your project.",
   },
   {
-    title: "Data-Driven Grant Analytics (Coming Soon)",
+    title: (
+      <>
+        Data-Driven Grant Analytics{" "}
+        <a
+          href="https://tally.so/r/wb6d0o"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-500 underline"
+        >
+          (Coming Soon)
+        </a>
+      </>
+    ),
     description:
       "Gain strategic insights with our analytics tools. Assess grant program strengths, identify gaps, and measure the impact of funded projects. Designed for builders and funding protocols looking to optimize grant allocation.",
   },
   {
-    title: "Expanding Beyond Web3 (Coming Soon)",
+    title: (
+      <>
+        Expanding Beyond Web3{" "}
+        <a
+          href="https://tally.so/r/wb6d0o"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-500 underline"
+        >
+          (Coming Soon)
+        </a>
+      </>
+    ),
     description:
       "While our platform focuses on Web3 projects and ecosystem grants, we are expanding to integrate and analyze institutional funding sources and broader grant categories—bridging the gap between Web3 and traditional funding to help builders and protocols diversify funding strategies and make data-backed decisions for long-term growth.",
   },
@@ -40,7 +76,7 @@ const team = [
   {
     name: "Mariana de la Roche W. (BlackVogel)",
     link: "https://www.linkedin.com/in/mariana-de-la-roche-es/",
-    role: "Head of BD – Manages business development and community outreach.      ",
+    role: "Head of BD – Manages business development and community outreach.",
   },
   {
     name: "Stamatis Manos Papangelou",
@@ -69,26 +105,28 @@ const AboutUs = () => {
               <a
                 href="http://www.cornarolabs.xyz"
                 target="_blank"
-                className="text-blue-500 hover:underline">
+                className="text-blue-500 hover:underline"
+              >
                 Cornaro Labs
               </a>{" "}
               is designed{" "}
               <span className="font-semibold text-slate-50">
-                {" "}
-                to revolutionize how Web3 grant programs are accessed, managed and analyzed.
+                to revolutionize how Web3 grant programs are accessed, managed, and analyzed.
               </span>
               The platform is built in collaboration with{" "}
               <a
                 href="https://www.blackvogel.com/"
                 target="_blank"
-                className="text-blue-500 hover:underline">
-                BlackVogel Consulting.
+                className="text-blue-500 hover:underline"
+              >
+                BlackVogel Consulting
               </a>{" "}
               and{" "}
               <a
                 href="https://hbi.gr/en/"
                 target="_blank"
-                className="text-blue-500 hover:underline">
+                className="text-blue-500 hover:underline"
+              >
                 Hareva Business Ideas.
               </a>
             </p>
@@ -104,12 +142,12 @@ const AboutUs = () => {
             <p>
               In addition to providing support to builders looking for grant funding, our solution
               provides a comprehensive analytics dashboard tailored for Web3 grant programs. It
-              integrates key metrics, AI-powered grant matchmaking, Data-driven analytics, and
+              integrates key metrics, AI-powered grant matchmaking, data-driven analytics, and
               impact measurement tools to enhance decision-making and optimize funding strategies.
             </p>
             <p>
               Backed by experts in grants, blockchain, and AI, we provide a data solution for both
-              Web3 funding protocols and builders , helping them make smarter decisions, track
+              Web3 funding protocols and builders, helping them make smarter decisions, track
               impact, and achieve better results with actionable insights.
             </p>
             <div>
@@ -133,7 +171,8 @@ const AboutUs = () => {
                       <a
                         href={member.link}
                         target="_blank"
-                        className="text-blue-500 hover:underline">
+                        className="text-blue-500 hover:underline"
+                      >
                         {member.name}
                       </a>
                     </h4>
@@ -145,10 +184,14 @@ const AboutUs = () => {
           </div>
         </ScrollArea>
         <p className="text-lg text-center text-white font-semibold">
-          Built with ❤️ by WorkPadHQ team
+          Built with ❤️ by{" "}
+          <a href="https://workpadhq.com/" target="_blank" className="text-blue-500 hover:underline">
+            WorkPadHQ team
+          </a>
         </p>
       </DialogContent>
     </Dialog>
   );
 };
+
 export default AboutUs;

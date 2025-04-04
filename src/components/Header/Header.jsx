@@ -14,11 +14,18 @@ const Header = () => {
           <AboutUs />
           <FAQ />
           <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSewB2GaJXyWY5m1de5zw-vnP4KotEtHu6sujaDWP9tWaoAquw/viewform?usp=sharing"
+            href="https://tally.so/r/nPGzAb"
             target="_blank"
             rel="noreferrer"
             className="text-white px-2 md:px-4 py-2 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors font-semibold">
             Add Grant
+          </a>
+          <a
+            href="https://tally.so/r/wb6d0o"
+            target="_blank"
+            rel="noreferrer"
+            className="text-white px-2 md:px-4 py-2 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors font-semibold">
+            AI Grant Matcher Tool
           </a>
         </div>
       </nav>
