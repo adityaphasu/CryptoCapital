@@ -48,7 +48,7 @@ export default function ChatbotContainer() {
             {messages.map((msg, index) => (
               <div
                 key={index}
-                className={flex ${msg.role === "user" ? "justify-end" : "justify-start"}}>
+               className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                 <div
                   className={p-3 max-w-[80%] rounded-xl shadow-lg ${
                     msg.role === "user"
