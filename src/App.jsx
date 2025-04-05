@@ -19,7 +19,7 @@ function App() {
         </div>
         <div className="w-[80%] lg:w-[95%] mx-auto my-6 flex flex-col lg:flex-row-reverse items-center lg:items-start gap-8 justify-center">
           <ChatbotContainer />
-          <div>
+          <div className="w-full">
             <div className="flex items-center pt-3 gap-5 font-medium text-white mb-0.5 border-b border-gray-600">
               <p className="relative">
                 Search Grants Database
