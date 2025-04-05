@@ -17,7 +17,7 @@ export default function ChatbotContainer() {
   };
 
   return (
-    <div className="bg-[#121C38] text-white p-6 rounded-xl shadow-lg border border-[#1F2A50] w-full lg:max-w-md lg:sticky lg:top-20 my-7">
+    <div className="bg-[#121C38] text-white p-6 rounded-xl shadow-lg border border-[#1F2A50] w-full lg:max-w-sm mx-auto my-7">
       <h2 className="text-xl font-bold text-[#EAEAEA]">AI Grant Matcher Tool</h2>
       <p className="text-sm text-[#A1B1E1] mt-2">
         Our AI assistant will match your project with the ideal grant opportunity.
@@ -40,7 +40,7 @@ export default function ChatbotContainer() {
         <SheetContent className="w-full sm:max-w-[480px] p-0 bg-[#121C38] text-white border-l border-[#1F2A50] flex flex-col">
           <div className="p-4 flex justify-between items-center border-b border-[#1F2A50]">
             <h2 className="text-lg font-semibold text-[#EAEAEA]">
-              <img src="./logo.png" className="w-44" alt="" />
+              <img src="./logo.png" className="w-44" alt="Cornaro Labs" />
             </h2>
           </div>
 
