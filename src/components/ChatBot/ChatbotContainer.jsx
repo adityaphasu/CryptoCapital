@@ -17,7 +17,7 @@ export default function ChatbotContainer() {
   };
 
   return (
-    <div className="bg-[#121C38] text-white p-6 rounded-xl shadow-lg border border-[#1F2A50] w-full lg:max-w-md lg:sticky lg:top-20 my-7">
+    <div className="bg-[#121C38] text-white p-6 rounded-xl shadow-lg border border-[#1F2A50] w-full lg:max-w-sm lg:sticky lg:top-20">
       <h2 className="text-xl font-bold text-[#EAEAEA]">AI Grant Matcher Tool</h2>
       <p className="text-sm text-[#A1B1E1] mt-2">
         Our AI assistant will match your project with the ideal grant opportunity.
@@ -48,8 +48,8 @@ export default function ChatbotContainer() {
             {messages.map((msg, index) => (
               <div
                 key={index}
-               className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-               <div
+                className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+                <div
                   className={`p-3 max-w-[80%] rounded-xl shadow-lg ${
                     msg.role === "user"
                       ? "bg-[#3D5A99] text-white rounded-tr-none"
