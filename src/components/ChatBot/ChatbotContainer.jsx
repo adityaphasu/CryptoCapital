@@ -49,12 +49,12 @@ export default function ChatbotContainer() {
               <div
                 key={index}
                className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                <div
-                  className={p-3 max-w-[80%] rounded-xl shadow-lg ${
+               <div
+                  className={`p-3 max-w-[80%] rounded-xl shadow-lg ${
                     msg.role === "user"
                       ? "bg-[#3D5A99] text-white rounded-tr-none"
                       : "bg-[#1A2B50] text-[#EAEAEA] rounded-tl-none"
-                  }}>
+                  }`}>
                   {msg.text}
                 </div>
               </div>
