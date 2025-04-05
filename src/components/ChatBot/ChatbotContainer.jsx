@@ -17,7 +17,8 @@ export default function ChatbotContainer() {
   };
 
   return (
-    <div className="fixed top-24 right-8 z-50 flex flex-col gap-4 w-full max-w-sm">
+    <div className="fixed top-24 right-8 z-50 flex flex-col items-end gap-4 max-w-sm">
+      {/* Chatbot Container */}
       <div className="bg-[#121C38] text-white p-6 rounded-xl shadow-lg border border-[#1F2A50] w-full">
         <h2 className="text-xl font-bold text-[#EAEAEA]">AI Grant Matcher Tool</h2>
         <p className="text-sm text-[#A1B1E1] mt-2">
@@ -79,26 +80,21 @@ export default function ChatbotContainer() {
         </Sheet>
       </div>
 
-      {/* Newsletter subscription */}
-      <div className="bg-[#121C38] border border-[#1F2A50] rounded-xl shadow-lg p-4 w-full">
+      {/* Newsletter subscription (styled minimally) */}
+      <div className="bg-[#121C38] border border-[#1F2A50] rounded-xl shadow-lg w-full p-4">
         <div className="mb-3 text-center">
           <h3 className="text-lg font-semibold text-[#EAEAEA]">Stay Updated!</h3>
           <p className="text-sm text-[#A1B1E1]">
-            Subscribe to our newsletter and never miss an important update on Web3 grants.
+            Subscribe to our newsletter for updates on Web3 grants.
           </p>
         </div>
-
         <iframe
           src="https://cornarolabs.substack.com/embed"
           width="100%"
-          height="220"
+          height="200"
           frameBorder="0"
           scrolling="no"
-          style={{
-            border: "none",
-            backgroundColor: "transparent",
-            borderRadius: "8px",
-          }}
+          style={{ backgroundColor: "transparent" }}
         ></iframe>
       </div>
     </div>
