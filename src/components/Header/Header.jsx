@@ -4,7 +4,7 @@ import FAQ from "./FAQ";
 const Header = () => {
   return (
     <header className="px-6 py-3 backdrop-blur-md bg-[#151226]/35 text-white fixed w-full z-10 shadow border-b border-gray-600 rounded-b-3xl">
-      <nav className="flex flex-col md:flex-row justify-between items-center">
+      <nav className="flex flex-col md:flex-row justify-between items-center lg:w-[90%] mx-auto 2xl:w-[80%] 3xl:w-[65%]">
         <div className="w-72 lg:w-52">
           <a href="https://www.cornarolabs.xyz" target="_blank" rel="noreferrer">
             <img src="./logo.png" alt="" />
@@ -14,11 +14,18 @@ const Header = () => {
           <AboutUs />
           <FAQ />
           <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSewB2GaJXyWY5m1de5zw-vnP4KotEtHu6sujaDWP9tWaoAquw/viewform?usp=sharing"
+            href="https://tally.so/r/nPGzAb"
             target="_blank"
             rel="noreferrer"
             className="text-white px-2 md:px-4 py-2 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors font-semibold">
             Add Grant
+          </a>
+          <a
+            href="https://tally.so/r/wb6d0o"
+            target="_blank"
+            rel="noreferrer"
+            className="text-white px-2 md:px-4 py-2 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors font-semibold">
+            AI Grant Matcher Tool
           </a>
         </div>
       </nav>
