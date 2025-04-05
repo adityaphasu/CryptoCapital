@@ -23,6 +23,9 @@ const Board = () => {
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const grantsPerPage = 20;
+
   const fetchGrants = async () => {
     try {
       const response = await fetch(
@@ -132,6 +135,14 @@ const Board = () => {
     searchQuery,
   ]);
 
+  const paginatedGrants = React.useMemo(() => {
+    const startIndex = (currentPage - 1) * grantsPerPage;
+    const endIndex = startIndex + grantsPerPage;
+    return filteredAndSortedGrants.slice(startIndex, endIndex);
+  }, [filteredAndSortedGrants, currentPage]);
+
+  const totalPages = Math.ceil(filteredAndSortedGrants.length / grantsPerPage);
+
   if (error) {
     return <div className="text-red-500">Error: {error}</div>;
   }
@@ -190,7 +201,6 @@ const Board = () => {
           <Button
             className="bg-[#151226]/70 h-auto hover:bg-[#151226]"
             onClick={() => {
-              console.log("reset");
               setSelectedEcosystems([]);
               setSelectedStatuses([]);
               setSelectedFundingTopics([]);
@@ -207,11 +217,32 @@ const Board = () => {
       <div className="grid grid-cols-1 gap-4">
         {isLoading ? (
           <div className="text-center">Loading...</div>
-        ) : filteredAndSortedGrants.length === 0 ? (
+        ) : paginatedGrants.length === 0 ? (
           <div className="text-center text-white text-xl py-6">No grants found.</div>
         ) : (
-          filteredAndSortedGrants.map((grant) => <GrantCard key={grant.id} grant={grant} />)
+          paginatedGrants.map((grant) => <GrantCard key={grant.id} grant={grant} />)
         )}
+      </div>
+      <div className="flex justify-center items-center gap-4 mt-4">
+        <button
+          className="bg-[#151226]/70 text-white px-4 py-2 rounded disabled:opacity-50"
+          onClick={() => {
+            setCurrentPage((prev) => Math.max(prev - 1, 1));
+            window.scrollTo({ top: 100 });
+          }}
+          disabled={currentPage === 1}>
+          Previous
+        </button>
+        <span className="text-white bg-[#151226] rounded px-4 py-2">{currentPage}</span>
+        <button
+          className="bg-[#151226]/70 text-white px-4 py-2 rounded disabled:opacity-50"
+          onClick={() => {
+            setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+            window.scrollTo({ top: 100 });
+          }}
+          disabled={currentPage === totalPages}>
+          Next
+        </button>
       </div>
     </div>
   );

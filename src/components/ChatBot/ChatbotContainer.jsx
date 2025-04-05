@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Send, Sparkles, X } from "lucide-react";
+import { Send } from "lucide-react";
 
 export default function ChatbotContainer() {
   const [prompt, setPrompt] = useState("");
@@ -33,7 +33,7 @@ export default function ChatbotContainer() {
       <Sheet>
         <SheetTrigger asChild>
           <Button className="w-full mt-4 bg-gradient-to-r from-[#253B6E] to-[#1A2B50] text-white flex items-center gap-2 border border-[#3D5A99] hover:bg-[#1A2B50] hover:border-[#58A6FF] transition-all">
-            <Sparkles size={18} className="text-white" /> Find Grants
+            Find Grants
           </Button>
         </SheetTrigger>
 
